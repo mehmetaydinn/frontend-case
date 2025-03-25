@@ -1,0 +1,55 @@
+:root {
+  /* Renkler */
+  --color-primary: #3498db;
+  --color-secondary: #2ecc71;
+  --color-accent: #f39c12;
+  --color-danger: #e74c3c;
+  --color-warning: #f1c40f;
+  --color-info: #1abc9c;
+  --color-dark: #34495e;
+  --color-grey: #95a5a6;
+  --color-light-grey: #ecf0f1;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Font boyutları */
+  --font-size-small: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-medium: 1.125rem;
+  --font-size-large: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 2rem;
+
+  /* Font aileleri */
+  --font-family-base: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --font-family-heading: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Boşluklar */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Kenar yuvarlatma */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+
+  /* Gölgeler */
+  --box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --box-shadow-md: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+  --box-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+
+  /* Geçişler */
+  --transition-slow: 0.5s ease;
+  --transition-base: 0.3s ease;
+  --transition-fast: 0.15s ease;
+}
+
+/* Medya sorguları için kullanım:
+@media (min-width: 576px) { ... } -> mobile
+@media (min-width: 768px) { ... } -> tablet
+@media (min-width: 992px) { ... } -> desktop
+@media (min-width: 1200px) { ... } -> large-desktop
+*/ 
