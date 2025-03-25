@@ -20,7 +20,7 @@ npm install
 npm run dev
 ```
 
-4. Tarayıcınızda http://localhost:3000 adresini açın.
+4. Tarayıcınızda http://localhost:5173 adresini açın.
 
 ## 🛠️ Kullanılan Teknolojiler
 
