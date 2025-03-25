@@ -103,6 +103,9 @@ const router = createRouter({
 
 // Navigasyon koruması
 router.beforeEach(async (to, from, next) => {
+
+  store.dispatch('ui/clearNotifications');
+  store.commit('user/CLEAR_ERROR');
   // Kimlik doğrulama durumunu kontrol et
   await store.dispatch('user/checkAuth');
   const isAuthenticated = store.getters['user/isAuthenticated'];

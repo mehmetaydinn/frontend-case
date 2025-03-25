@@ -919,7 +919,6 @@ export default {
 }
 
 .step.completed {
-  background-color: var(--color-success);
   color: #000000;
   border-color: #e0e0e0;
   font-weight: bold;
@@ -1074,27 +1073,28 @@ select:focus {
   min-width: 80px;
 }
 
-.checkbox-container {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-  font-weight: normal;
-}
-
-.checkbox-container input {
-  margin-right: var(--spacing-sm);
-}
-
-.checkbox-group {
+.free-checkbox {
   display: flex;
   align-items: center;
   margin-top: var(--spacing-md);
 }
 
-.checkbox-label {
-  margin-left: var(--spacing-sm);
-  margin-bottom: 0;
+.free-checkbox .checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.free-checkbox input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
+}
+
+.free-checkbox label {
+  margin: 0;
+  cursor: pointer;
 }
 
 .image-upload {

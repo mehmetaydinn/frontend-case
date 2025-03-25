@@ -122,14 +122,14 @@
           <div class="currency-display">{{ currency }}</div>
         </div>
         
-        <div class="free-filter">
-          <label class="checkbox-container">
-            <input 
-              type="checkbox" 
-              v-model="filters.onlyFree" 
-              @change="emitChange"
-            />
-            <span class="checkmark"></span>
+        <div class="form-group terms">
+          <input 
+            type="checkbox" 
+            id="onlyFree"
+            v-model="filters.onlyFree" 
+            @change="emitChange"
+          />
+          <label for="onlyFree">
             Sadece Ücretsiz Kitaplar
           </label>
         </div>
@@ -594,5 +594,28 @@ export default {
     color: #bdbdbd;
     margin-top: 4px;
   }
+}
+
+.form-group.terms {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-md) 0;
+}
+
+.form-group.terms input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
+}
+
+.form-group.terms label {
+  margin: 0;
+  font-weight: normal;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  user-select: none;
+  flex: 1;
+  color: var(--text-color);
 }
 </style>

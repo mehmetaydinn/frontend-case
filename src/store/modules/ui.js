@@ -104,6 +104,11 @@ export default {
     
     clearFilterParams({ commit }) {
       commit('CLEAR_FILTER_PARAMS');
+    },
+    
+    clearNotifications({ commit }) {
+      commit('CLEAR_NOTIFICATION');
+      commit('CLEAR_ERROR');
     }
   }
 }; 

@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import { useVuelidate } from '@vuelidate/core';
@@ -111,6 +111,11 @@ export default {
   setup() {
     const store = useStore();
     const router = useRouter();
+    
+    // Sayfa yüklendiğinde önceki bildirimleri temizle
+    onMounted(() => {
+      store.dispatch('ui/clearNotifications');
+    });
     
     // Form verileri
     const name = ref('');
@@ -151,21 +156,28 @@ export default {
       
       if (isFormValid) {
         try {
-          await store.dispatch('user/register', {
+          const registerResult = await store.dispatch('user/register', {
             name: name.value,
             email: email.value,
             password: password.value
           });
           
           // Başarılı kayıt sonrası yönlendirme
-          router.push('/');
-          
-          // Bildirim göster
-          store.dispatch('ui/showNotification', {
-            message: 'Başarıyla kayıt oldunuz',
-            type: 'success'
-          });
+          if (registerResult) {
+            router.push('/');
+            
+            // Bildirim göster
+            store.dispatch('ui/showNotification', {
+              message: 'Başarıyla kayıt oldunuz',
+              type: 'success'
+            });
+          }
         } catch (err) {
+          // Hata durumunda bildirim göster
+          store.dispatch('ui/showNotification', {
+            message: 'Kayıt işlemi başarısız oldu. Lütfen bilgilerinizi kontrol edin.',
+            type: 'error'
+          });
         }
       }
     };
@@ -248,18 +260,23 @@ export default {
 
 .form-group.terms {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--spacing-sm);
+  margin: var(--spacing-md) 0;
 }
 
-.form-group.terms input {
-  margin-top: 4px;
+.form-group.terms input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
 }
 
 .form-group.terms label {
-  margin-bottom: 0;
+  margin: 0;
   font-weight: normal;
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  user-select: none;
   flex: 1;
 }
 

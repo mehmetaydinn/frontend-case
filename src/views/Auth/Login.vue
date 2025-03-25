@@ -95,21 +95,28 @@ export default {
       
       if (isFormValid) {
         try {
-          await store.dispatch('user/login', {
+          const loginResult = await store.dispatch('user/login', {
             email: email.value,
             password: password.value
           });
           
           // Başarılı giriş sonrası yönlendirme
-          const redirectPath = route.query.redirect || '/';
-          router.push(redirectPath);
-          
-          // Bildirim göster
-          store.dispatch('ui/showNotification', {
-            message: 'Başarıyla giriş yaptınız',
-            type: 'success'
-          });
+          if (loginResult) {
+            const redirectPath = route.query.redirect || '/';
+            router.push(redirectPath);
+            
+            // Bildirim göster
+            store.dispatch('ui/showNotification', {
+              message: 'Başarıyla giriş yaptınız',
+              type: 'success'
+            });
+          }
         } catch (err) {
+          // Hata durumunda bildirim göster
+          store.dispatch('ui/showNotification', {
+            message: 'Giriş yapılamadı. Lütfen bilgilerinizi kontrol edin.',
+            type: 'error'
+          });
         }
       }
     };
